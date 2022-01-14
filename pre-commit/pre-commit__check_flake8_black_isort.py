@@ -4,11 +4,11 @@
 We could let black check the whole source code, but to allow incremental updating of
 unformatted files we will only reject unformatted files that are staged for commit.
 """
+import argparse
 import os
 import shlex
 import subprocess  # noqa: S404
 import sys
-import argparse
 
 
 def get_files_to_check() -> list[str]:
