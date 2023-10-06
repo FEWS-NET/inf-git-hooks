@@ -11,9 +11,9 @@ To make git use a hook, just put it into the `.git/hooks` directory and name it 
 git does not support running multiple hooks of the same category out of the box. However, there is a simple bash script in this repo called `pre-commit_run_multiple_hooks.sh`, that will call all hooks from a subdirectory called `pre-commit.d`.
 Just rename it to `pre-commit`, put it into the `.git/hooks` directory, then put additional hooks into a new folder called `pre-commit.d` inside the `.git/hooks` directory, and they will be executed as well.
 
-## pre-commit hook that runs black, flake8 and isort
+## pre-commit hook that runs black, ruff and isort
 
-There is a [pre-commit](pre-commit/pre-commit__check_flake8_black_isort.py) hook in this repository, that runs black, flake8 and isort on files that have been staged for commit, rejecting the commit if any of those commands finds an issue.
+There is a [pre-commit](pre-commit/pre-commit__check_ruff_black_isort.py) hook in this repository, that runs black, ruff and isort on files that have been staged for commit, rejecting the commit if any of those commands finds an issue.
 To activate it, it has just to be renamed to `pre-commit` and placed into the `.git/hooks` directory.
 
 To be useful standalone, it can be called with command line switches to disable specific checks, or run against all files in the repository instead of only staged files.
@@ -28,14 +28,12 @@ Disables using _black_ for checking if the source codes files would be reformatt
 
 </details>
 
-
 <details>
-    <summary>--no-flake8 / NO_FLAKE8</summary>
+    <summary>--no-ruff / NO_RUFF</summary>
 
-Disables using _flake8_ linter which checks for a large number of potential problems.
+Disables using _ruff_ linter which checks for a large number of potential problems.
 
 </details>
-
 
 <details>
     <summary>--no-isort / NO_ISORT</summary>
@@ -43,7 +41,6 @@ Disables using _flake8_ linter which checks for a large number of potential prob
 Disables using _isort_ for checking if the order of imports in Python source code files would be changed by _isort_.
 
 </details>
-
 
 <details>
     <summary>--check-all-files / CHECK_ALL_FILES</summary>

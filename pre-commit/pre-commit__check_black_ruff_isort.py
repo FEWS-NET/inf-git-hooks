@@ -45,9 +45,8 @@ def run_cmd(cmd: list[str]) -> None:
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser(
-        description="pre-commit hook to check for flake8, black, isort."
+        description="pre-commit hook to check for black, ruff, isort."
     )
     parser.add_argument(
         "--black",
@@ -56,10 +55,10 @@ if __name__ == "__main__":
         help="Whether to run black on changed files (default=True).",
     )
     parser.add_argument(
-        "--flake8",
-        default=False if "NO_FLAKE8" in os.environ else True,
+        "--ruff",
+        default=False if "NO_RUFF" in os.environ else True,
         action=argparse.BooleanOptionalAction,
-        help="Whether to run flake8 on changed files (default=True).",
+        help="Whether to run ruff on changed files (default=True).",
     )
     parser.add_argument(
         "--isort",
@@ -80,8 +79,8 @@ if __name__ == "__main__":
     if not files_to_check:
         sys.exit()
 
-    checks = ["black", "flake8", "isort"]
-    cmd_extras = {"black": ["--check"], "isort": ["--check"]}
+    checks = ["black", "ruff", "isort"]
+    cmd_extras = {"black": ["--check"], "ruff": ["check"], "isort": ["--check"]}
 
     cmds = []
 
